@@ -11,11 +11,11 @@ const App = () => {
             <Router>
             <Switch>
                 <SignUp/>
-                <Route path="dhruvisha08.github.io/ui-react-assignment/" exact component={SignUp}/>
-                <Route path="/signUp" component={SignUp}/>
-                <Route path="/signIn" component={SignIn}/>
-                <Route path="/addClient" component={AddClient}/>
-                <Route path="/clientDetails" component={ClientDetails}/>
+                <Route path="ui-react-assignment/" exact component={SignUp}/>
+                <Route path="ui-react-assignment/signUp" component={SignUp}/>
+                <Route path="ui-react-assignment/signIn" component={SignIn}/>
+                <Route path="ui-react-assignment/addClient" component={AddClient}/>
+                <Route path="ui-react-assignment/clientDetails" component={ClientDetails}/>
             </Switch>
             </Router>
         </div>
