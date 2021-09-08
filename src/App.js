@@ -10,6 +10,7 @@ const App = () => {
         <div>
             <Router>
             <Switch>
+                <SignUp/>
                 <Route path="/" exact component={SignUp}/>
                 <Route path="/signUp" component={SignUp}/>
                 <Route path="/signIn" component={SignIn}/>
