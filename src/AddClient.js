@@ -82,7 +82,7 @@ return(
           }
           saveForm(data);
           localStorage.setItem("client", JSON.stringify(values));
-          history.push('/clientDetails');
+          history.push('dhruvisha08.github.io/ui-react-assignment/clientDetails');
         }}
         >
           {({ handleSubmit, }) => (

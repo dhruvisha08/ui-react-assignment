@@ -42,7 +42,7 @@ const SignIn = props => {
         setUserInfos([...userInfos, userInfo ]);
         console.log(userInfo);
         setUser({uname:"", pwd:""});
-        history.push('/addClient');
+        history.push('dhruvisha08.github.io/ui-react-assignment/addClient');
     }
 
     
@@ -52,7 +52,7 @@ const SignIn = props => {
             <h1> </h1>
             <div className="formBox">
              {/* <!-- Sign up and Sign in button --> */}
-             <Link to='/signUp'>
+             <Link to='dhruvisha08.github.io/ui-react-assignment/signUp'>
                 <button type="button" id="signUpButton" >SIGN UP</button>
              </Link>
              <button type="button" id="signInButton" >SIGN IN</button>
