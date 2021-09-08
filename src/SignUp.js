@@ -43,7 +43,7 @@ const SignUp = () => {
         e.preventDefault();
         console.log(user);
         setUser({uname:"", pwd:"", cpwd:""});
-        history.push('ui-react-assignment/signIn');
+        history.push('/signIn');
     };
 
     return(
@@ -52,7 +52,7 @@ const SignUp = () => {
           <div className="formBox">
              {/* <!-- Sign up and Sign in button --> */}  
              <button type="button" id="signUpButton"  >SIGN UP</button>
-             <Link to='ui-react-assignment/signIn'>
+             <Link to='/signIn'>
                 <button type="button" id="signInButton" >SIGN IN</button>
              </Link>
         
