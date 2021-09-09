@@ -52,7 +52,7 @@ const SignUp = () => {
           <div className="formBox">
              {/* <!-- Sign up and Sign in button --> */}  
              <button type="button" id="signUpButton"  >SIGN UP</button>
-             <Link to='dhruvisha08.github.io/signIn'>
+             <Link to='/signIn'>
                 <button type="button" id="signInButton" >SIGN IN</button>
              </Link>
         

@@ -9,7 +9,7 @@ class ClientDetails extends Component{
         console.log(details)
         return(
          <div>
-            {details}
+            {JSON.stringify(details)}
          </div>
         )
     }

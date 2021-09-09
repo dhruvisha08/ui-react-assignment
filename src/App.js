@@ -13,7 +13,7 @@ const App = () => {
                 <SignUp/>
                 <Route path="ui-react-assignment/" exact component={SignUp}/>
                 <Route path="/signUp" component={SignUp}/>
-                <Route path="dhruvisha08.github.io/signIn" component={SignIn}/>
+                <Route path="/signIn" component={SignIn}/>
                 <Route path="/addClient" component={AddClient}/>
                 <Route path="/clientDetails" component={ClientDetails}/>
             </Switch>
