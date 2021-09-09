@@ -10,8 +10,7 @@ const App = () => {
         <div>
             <Router>
             <Switch>
-                <SignUp/>
-                <Route path="ui-react-assignment/" exact component={SignUp}/>
+                <Route path="/" exact component={SignUp}/>
                 <Route path="/signUp" component={SignUp}/>
                 <Route path="/signIn" component={SignIn}/>
                 <Route path="/addClient" component={AddClient}/>
