@@ -41,7 +41,8 @@ const removeField = index => {
 
 return(
   <div className="body">
-    <NavBar/>
+    <NavBar passive="nav-item nav-link active text"
+            active="nav-item nav-link text"/>
     <h1>Add Client</h1>
     <div className="outline">
     <Formik
