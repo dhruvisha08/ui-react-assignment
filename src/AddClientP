@@ -1,0 +1,340 @@
+import React, { useState } from 'react';
+import { Formik, Form, Field } from 'formik';
+import InputField from './InputField'
+import * as Yup from 'yup';
+import './style.css';
+import NavBar from './NavBar';
+
+
+const AddClient = props =>{
+
+const [inputValue, setInputValue] = useState({ firstName: "", middleName: "" , lastName:"", email:"", 
+                                                contact:"", address:"", dob:"", age:"", bName:"", btype:""});
+const { firstName, middleName, lastName, email, contact, address, dob , age, bName, btype} = inputValue;
+
+
+const [partner, setPartner] = useState([{ partners: "" }]); 
+
+const getValue = (val, label) => {
+  console.log("value", val);
+  switch(label){
+    case "First Name*" :
+         setInputValue(inputValue => ({...inputValue, firstName: val}));
+         break;
+    case "Last Name*" :
+          setInputValue(inputValue => ({...inputValue, lastName: val}));
+          break;
+    case 'Middle Name*' :
+          setInputValue(inputValue => ({...inputValue, middleName: val}));
+          break;
+    case 'Email Id*' :
+          setInputValue(inputValue => ({...inputValue, email: val}));
+          break;
+    case 'Phone*' :
+          setInputValue(inputValue => ({...inputValue, contact: val}));
+          break;
+    case 'Address*' :
+          setInputValue(inputValue => ({...inputValue, address: val}));
+          break;
+    case 'DOB*' :
+          setInputValue(inputValue => ({...inputValue, dob: val}));
+          break;
+    case 'Age*' :
+          setInputValue(inputValue => ({...inputValue, age: val}));
+          break;
+    case 'Business Type*' :
+          setInputValue(inputValue => ({...inputValue, btype: val}));
+          break;
+    case 'Business Name*' :
+          setInputValue(inputValue => ({...inputValue, bName: val}));
+          break;
+    default :
+
+  }
+  // setInputValue(inputValue => ({...inputValue, firstName: val}));
+};
+
+const handleInputChange = (e, index) => {
+  const { name, value } = e.target;
+  const list = [...partner];
+  list[index][name] = value;
+  setPartner(list);
+};
+
+const addNewField = () =>{
+  setPartner([...partner,{partners:""}]);
+}
+
+    return(
+      <div className="body">
+        <NavBar/>
+        <h1>Add Client</h1>
+        <div className="outline">
+        <Formik
+          initialValues={{
+              firstName:'',
+              middleName:'',
+              lastName:'',
+              email:'',
+              phn:'',
+              address:'',
+              dob:'',
+              age:'',
+              gender:'',
+              occupation:'',
+              bussinessName:'',
+              typeOfBussiness:'',
+              partners:'',
+              avgIncome:'',
+            }}
+            validationSchema={
+              Yup.object().shape({
+                email: Yup.string().email().required(),
+              })
+            }
+            >
+              {({ errors, touched }) => (
+                <Form>
+                    <div className="container-fluid" >
+                    <div className="row no-gutters">
+                      <div className="col-lg-4">
+                        <div className="PPBox">
+                          <label htmlFor="profile">Upload Profile Picture:</label>
+                          <Field name="profilePicture" type="file"
+                                 accept="image/png,image/jpeg" />
+                        </div>
+                      </div>
+                      <div className="col-lg-8">
+                        <div className="row no-gutters">
+                          <InputField
+                              id="firstName"
+                              type="text"
+                              value={firstName}
+                              placeholder=" "
+                              label="First Name*"
+                              onChange={getValue}
+                             />
+                          {/* <label htmlFor="firstname" className="col-lg-3 label" >First Name*</label>
+                          <Field name="firstName" type="text" className="col-lg-9 inputField" required={true} /> */}
+                        </div>
+                        <div className="row no-gutters">
+                        <InputField
+                              id="middleName"
+                              type="text"
+                              value={middleName}
+                              placeholder=" "
+                              label="Middle Name*"
+                              name="middleName"
+                              onChange={getValue} />
+                          {/* <label htmlFor="middlename" className="col-lg-3 label">Middle Name*</label>
+                          <Field name="middleName" type="text" className="col-lg-9 inputField" /> */}
+                        </div>
+                        <div className="row no-gutters">
+                        <InputField
+                              type="text"
+                              value={lastName}
+                              placeholder=" "
+                              label="Last Name*"
+                              name="lastName"
+                              onChange={getValue} />
+                          {/* <label htmlFor="lastname" className="col-lg-3 label">Last Name*</label>
+                          <Field name="lastName" type="text" className="col-lg-9 inputField" /> */}
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                    <div className="container-fluid" >
+                      <div className="row ">
+                      <div className="col-lg-6" >
+                      <div className="row no-gutters">
+                      <InputField
+                              type="email"
+                              value={email}
+                              placeholder=" "
+                              label="Email Id*"
+                              name="email"
+                              onChange={getValue} />
+                            {/* <label htmlFor="email" className="col-lg-3 label">Email Id*</label>
+                            <Field name="email" type="email" className="col-lg-9 inputField" /> */}
+                            {errors.email && touched.email ? <div>{errors.email}</div> : null}
+                        </div>
+                      </div>
+                      <div className="col-lg-6">
+                        <div className="row no-gutters">
+                        <InputField
+                              type="tel"
+                              value={contact}
+                              placeholder=" "
+                              label="Phone*"
+                              name="contact" 
+                              onChange={getValue}/>
+                          {/* <label htmlFor="contact" className="col-lg-2 label">Phone* </label>
+                          <Field name="contact" type="tel" className="col-lg-10 inputField" /> */}
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div className="container row ">
+                    <InputField
+                              type="text"
+                              value={address}
+                              placeholder=" "
+                              label="Address*"
+                              name="address" 
+                              onChange={getValue}/>
+                      {/* <label htmlFor="address" className="label">Address*         </label>
+                      <Field name="address" type="text" className="inputField" style={{width:"850px"}}/> */}
+                    </div>
+                    <div className="container-fluid" >
+                      <div className="row ">
+                      <div className="col-lg-6" >
+                      <div className="row no-gutters">
+                      <InputField
+                              type="date"
+                              value={dob}
+                              placeholder=" "
+                              label="DOB*"
+                              name="dob"
+                              onChange={getValue} />
+                            {/* <label htmlFor="dob" className="col-lg-3 label">DOB*</label>
+                            <Field name="email" type="date" className="col-lg-9 inputField" /> */}
+                        </div>
+                      </div>
+                      <div className="col-lg-6">
+                        <div className="row no-gutters">
+                        <InputField
+                              type="number"
+                              value={age}
+                              placeholder=" "
+                              label="Age*"
+                              name="age" 
+                              onChange={getValue}/>
+                          {/* <label htmlFor="age" className="col-lg-2 label">Age* </label>
+                          <Field name="age" type="number" className="col-lg-10 inputField" /> */}
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div className="container-fluid" >
+                      <div className="row ">
+                      <div className="col-lg-6" >
+                      <div className="row no-gutters">
+                          <p className="label col-lg-3 ">Gender*</p>
+                          <label className="label">
+                            <Field type="radio" name="gender" value="female"/>Female
+                          </label>
+                          <label className="label">
+                            <Field type="radio" name="gender" value="male"/>Male
+                          </label>
+                        </div>
+                      </div>
+                      <div className="col-lg-6">
+                        <div className="row no-gutters">
+                        <p className="label col-lg-4 ">Occupation*</p>
+                        <label className="label">
+                          <Field type="checkbox" name="occupation" value="Bussiness" />
+                           Business
+                        </label>
+                        <label label className="label">
+                          <Field type="checkbox" name="occupation" value="Service" />
+                           Service
+                        </label>
+                        </div>
+                      </div>
+                      </div>
+                     </div> 
+                    <div className="container-fluid" >
+                      <div className="row ">
+                      <div className="col-lg-6" >
+                      <div className="row no-gutters">
+                      <InputField
+                              type="text"
+                              value={bName}
+                              placeholder=" "
+                              label="Business Name*"
+                              name="bName"
+                              onChange={getValue} />
+                            {/* <label htmlFor="bname" className="col-lg-3 label">Bussiness Name*</label>
+                            <Field name="bname" type="text" className="col-lg-9 inputField" style={{height:"80px"}}/> */}
+                        </div>
+                      </div>
+                      <div className="col-lg-6">
+                        <div className="row no-gutters"><InputField
+                              type="text"
+                              value={btype}
+                              placeholder=" "
+                              label="Business Type*"
+                              name="btype"
+                              onChange={getValue} />
+                          {/* <label htmlFor="btype" className="col-lg-3 label">Type of Bussiness* </label>
+                          <Field name="btype" type="text" className="col-lg-9 inputField" style={{height:"80px"}} /> */}
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div className="container-fluid">
+                    <div className="row ">
+                        <div className="col-lg-7 row no-gutters" >
+                            <label className="col-lg-3 label" htmlFor="partners">Partners if any*</label>
+                            {partner.map((x,i) =>{
+                              return(
+                                <div>
+                                <Field type="text" className="col-lg-9 inputField" name="partners" style={{height:"80px"}}
+                                         value={x.lastName}
+                                         onChange={e => handleInputChange(e, i)}/>
+                                <button onClick={addNewField}>+</button>
+                                </div>
+                              )
+                            })}
+                        </div>                    
+                    </div>
+                    </div>
+                    <div className="container-fluid">
+                    <div className="row ">
+                        <div className="col-lg-6 row no-gutters">
+                           <label htmlFor="annualS" style={{marginTop: "20px"}} className="col-lg-5 label">Average Annual Income:</label>
+                           <select
+                              name="annualS" className="col-lg-7"
+                               style={{height:"40px", marginTop:"50px"}}>
+                              <option value="" label="Salary Range" />  
+                              <option value="30K" label="29K"></option>
+                              <option value="60K" label="30K-59K"></option>
+                              <option value="90K" label="60K-90K"></option>
+                           </select> 
+                        </div>
+                    </div>
+                </div>
+                <button type="button" style={{marginLeft: "340px"}}  name="cancel">Cancel</button>
+                <button type="reset">Reset</button>
+                <button type="submit"> Submit</button>
+                </Form> )} 
+              </Formik>
+        </div>
+      </div>
+      
+    )
+}
+
+export default AddClient;
+
+
+
+const initialState = {
+    client: [
+               {firstName:"",
+                email:"",
+                contact:""}
+    ],
+  }
+  
+  export function AddClientReducer(state = initialState, action) {
+    switch (action.type) {
+      case 'USER_INPUT':
+        return {
+          ...state,
+          client: action.client,
+        }
+      default:
+        return state
+    }
+  }
